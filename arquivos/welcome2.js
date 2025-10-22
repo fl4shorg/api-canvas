@@ -7,9 +7,9 @@ router.get('/knights/welcome', async (req, res) => {
     const {
       username = "UNDEFINED",
       guildName = "Servidor",
-      guildIcon = "https://i.pravatar.cc/150?img=1",
+      guildIcon = "https://i.pinimg.com/736x/a7/20/80/a720804619ff4c744098b956307db1ff.jpg",
       memberCount = "1",
-      avatar = "https://i.pravatar.cc/300?img=2",
+      avatar = "https://i.pinimg.com/736x/a7/20/80/a720804619ff4c744098b956307db1ff.jpg",
       background = "https://images.unsplash.com/photo-1579546929518-9e396f3cc809"
     } = req.query;
 
@@ -34,7 +34,7 @@ router.get('/knights/welcome', async (req, res) => {
 router.get('/knights/welcome2', async (req, res) => {
   try {
     const {
-      avatar = "https://i.pravatar.cc/300?img=3",
+      avatar = "https://i.pinimg.com/736x/a7/20/80/a720804619ff4c744098b956307db1ff.jpg",
       username = "Usuário",
       background = "https://images.unsplash.com/photo-1579546929518-9e396f3cc809",
       groupname = "Servidor",
@@ -63,9 +63,9 @@ router.get('/knights/goodbye', async (req, res) => {
     const {
       username = "UNDEFINED",
       guildName = "Servidor",
-      guildIcon = "https://i.pravatar.cc/150?img=4",
+      guildIcon = "https://i.pinimg.com/736x/a7/20/80/a720804619ff4c744098b956307db1ff.jpg",
       memberCount = "1",
-      avatar = "https://i.pravatar.cc/300?img=5",
+      avatar = "https://i.pinimg.com/736x/a7/20/80/a720804619ff4c744098b956307db1ff.jpg",
       background = "https://images.unsplash.com/photo-1579546929518-9e396f3cc809"
     } = req.query;
 
@@ -90,7 +90,7 @@ router.get('/knights/goodbye', async (req, res) => {
 router.get('/knights/rank', async (req, res) => {
   try {
     const {
-      avatar = "https://i.pravatar.cc/300?img=6",
+      avatar = "https://i.pinimg.com/736x/a7/20/80/a720804619ff4c744098b956307db1ff.jpg",
       username = "Usuário",
       background = "https://images.unsplash.com/photo-1579546929518-9e396f3cc809",
       needxp = "1000",
@@ -121,7 +121,7 @@ router.get('/knights/rank', async (req, res) => {
 router.get('/knights/levelup', async (req, res) => {
   try {
     const {
-      avatar = "https://i.pravatar.cc/300?img=7"
+      avatar = "https://i.pinimg.com/736x/a7/20/80/a720804619ff4c744098b956307db1ff.jpg"
     } = req.query;
 
     const image = await new knights.Up()
@@ -140,7 +140,7 @@ router.get('/knights/levelup', async (req, res) => {
 router.get('/knights/horny', async (req, res) => {
   try {
     const {
-      avatar = "https://i.pravatar.cc/300?img=8"
+      avatar = "https://i.pinimg.com/736x/a7/20/80/a720804619ff4c744098b956307db1ff.jpg"
     } = req.query;
 
     const image = await new knights.Horny()
@@ -159,7 +159,7 @@ router.get('/knights/horny', async (req, res) => {
 router.get('/knights/jojo', async (req, res) => {
   try {
     const {
-      image = "https://i.pravatar.cc/300?img=9"
+      image = "https://i.pinimg.com/736x/a7/20/80/a720804619ff4c744098b956307db1ff.jpg"
     } = req.query;
 
     const img = await new knights.Jo()
@@ -178,7 +178,7 @@ router.get('/knights/jojo', async (req, res) => {
 router.get('/knights/patrick', async (req, res) => {
   try {
     const {
-      avatar = "https://i.pravatar.cc/300?img=10"
+      avatar = "https://i.pinimg.com/736x/a7/20/80/a720804619ff4c744098b956307db1ff.jpg"
     } = req.query;
 
     const image = await new knights.Patrick()
@@ -197,8 +197,8 @@ router.get('/knights/patrick', async (req, res) => {
 router.get('/knights/bonk', async (req, res) => {
   try {
     const {
-      avatar1 = "https://i.pravatar.cc/300?img=11",
-      avatar2 = "https://i.pravatar.cc/300?img=12"
+      avatar1 = "https://i.pinimg.com/736x/a7/20/80/a720804619ff4c744098b956307db1ff.jpg",
+      avatar2 = "https://i.pinimg.com/736x/a7/20/80/a720804619ff4c744098b956307db1ff.jpg"
     } = req.query;
 
     const image = await new knights.Bonk()
@@ -218,7 +218,7 @@ router.get('/knights/bonk', async (req, res) => {
 router.get('/knights/burn', async (req, res) => {
   try {
     const {
-      avatar = "https://i.pravatar.cc/300?img=13"
+      avatar = "https://i.pinimg.com/736x/a7/20/80/a720804619ff4c744098b956307db1ff.jpg"
     } = req.query;
 
     const image = await new knights.Burn()

@@ -6,7 +6,7 @@ const canvafy = require('canvafy');
 router.get('/welcome', async (req, res) => {
   try {
     const {
-      avatar = "https://i.pravatar.cc/300?img=20",
+      avatar = "https://i.pinimg.com/736x/a7/20/80/a720804619ff4c744098b956307db1ff.jpg",
       background = "https://images.unsplash.com/photo-1579546929518-9e396f3cc809",
       title = "Bem-vindo!",
       description = "Entrou no servidor ✨",
@@ -37,7 +37,7 @@ router.get('/welcome', async (req, res) => {
 router.get('/goodbye', async (req, res) => {
   try {
     const {
-      avatar = "https://i.pravatar.cc/300?img=21",
+      avatar = "https://i.pinimg.com/736x/a7/20/80/a720804619ff4c744098b956307db1ff.jpg",
       background = "#000000",
       title = "Adeus!",
       description = "Saiu do servidor 💔",
@@ -68,7 +68,7 @@ router.get('/goodbye', async (req, res) => {
 router.get('/rank', async (req, res) => {
   try {
     const {
-      avatar = "https://i.pravatar.cc/300?img=22",
+      avatar = "https://i.pinimg.com/736x/a7/20/80/a720804619ff4c744098b956307db1ff.jpg",
       background = "#1E1E2E",
       username = "Usuário",
       border = "#00FFFF",
@@ -124,7 +124,7 @@ router.get('/profile', async (req, res) => {
 router.get('/level', async (req, res) => {
   try {
     const {
-      avatar = "https://i.pravatar.cc/300?img=23",
+      avatar = "https://i.pinimg.com/736x/a7/20/80/a720804619ff4c744098b956307db1ff.jpg",
       background = "#2E2E2E",
       username = "Usuário",
       currentLevel = "1",
@@ -152,8 +152,8 @@ router.get('/level', async (req, res) => {
 router.get('/ship', async (req, res) => {
   try {
     const {
-      avatar1 = "https://i.pravatar.cc/300?img=24",
-      avatar2 = "https://i.pravatar.cc/300?img=25",
+      avatar1 = "https://i.pinimg.com/736x/a7/20/80/a720804619ff4c744098b956307db1ff.jpg",
+      avatar2 = "https://i.pinimg.com/736x/a7/20/80/a720804619ff4c744098b956307db1ff.jpg",
       background = "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2",
       border = "#FF00FF",
       opacity = "0.5"
@@ -178,7 +178,7 @@ router.get('/ship', async (req, res) => {
 router.get('/instagram', async (req, res) => {
   try {
     const {
-      avatar = "https://i.pravatar.cc/300?img=26",
+      avatar = "https://i.pinimg.com/736x/a7/20/80/a720804619ff4c744098b956307db1ff.jpg",
       username = "usuario",
       postImage = "https://images.unsplash.com/photo-1611162617474-5b21e879e113",
       theme = "dark",
@@ -205,7 +205,7 @@ router.get('/instagram', async (req, res) => {
 router.get('/tweet', async (req, res) => {
   try {
     const {
-      avatar = "https://i.pravatar.cc/300?img=27",
+      avatar = "https://i.pinimg.com/736x/a7/20/80/a720804619ff4c744098b956307db1ff.jpg",
       username = "usuario",
       comment = "Olá mundo! 👋",
       theme = "dark",
@@ -288,7 +288,7 @@ router.get('/captcha', async (req, res) => {
 router.get('/security', async (req, res) => {
   try {
     const {
-      avatar = "https://i.pravatar.cc/300?img=28",
+      avatar = "https://i.pinimg.com/736x/a7/20/80/a720804619ff4c744098b956307db1ff.jpg",
       createdTimestamp = Date.now().toString(),
       suspectTimestamp = Date.now().toString(),
       background = "https://images.unsplash.com/photo-1614064641938-3bbee52942c7",
