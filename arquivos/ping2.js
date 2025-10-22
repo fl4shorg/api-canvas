@@ -191,7 +191,7 @@ async function drawPing2Banner(config) {
   }
 
   // Name text
-  const name = (config.name || 'NEON').toUpperCase();
+  const name = (config.name || 'NEEXT').toUpperCase();
   ctx.font = '900 80px Arial, sans-serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'top';
@@ -315,7 +315,7 @@ async function drawPing2Banner(config) {
 router.get('/ping2', async (req, res) => {
   try {
     const config = {
-      name: req.query.name || 'NEON',
+      name: req.query.name || 'NEEXT',
       speed: req.query.speed || '999',
       label: req.query.label || 'VELOCIDADE',
       system: req.query.system || '',

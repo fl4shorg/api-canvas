@@ -39,7 +39,7 @@ Generate a simplified neon-style banner with centered avatar and speed indicator
 - `GET /ping2` - Neon banner with centered avatar and speed (estilo premium neon)
 
 **Query Parameters:**
-- `name` - Nome do usuário (padrão: "NEON")
+- `name` - Nome do usuário (padrão: "NEEXT")
 - `speed` - Velocidade/número exibido (padrão: "999")
 - `label` - Texto do rótulo inferior (padrão: "VELOCIDADE")
 - `system` - Sistema/texto adicional opcional (padrão: "")
