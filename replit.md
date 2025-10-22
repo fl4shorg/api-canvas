@@ -58,24 +58,32 @@ Backend API service (Express.js)
 ```
 
 ## Running the Server
-The server runs on port 3000 and listens on all interfaces (0.0.0.0).
+The server runs on port 5000 (Replit environment) or uses PORT environment variable, and listens on all interfaces (0.0.0.0).
 
 ```bash
 npm start
 ```
 
+## Deployment
+Configured for autoscale deployment (stateless API server). The deployment automatically scales based on incoming requests.
+
 ## System Dependencies
 The following system packages are required for canvas image generation:
+- `util-linux` - Provides libuuid library
 - `libuuid` - Required for the canvas library native bindings
+- `pkg-config` - Build configuration helper
 
 ## Recent Changes (October 22, 2025)
 - Configured for Replit environment
-- Added environment variable support for PORT (defaults to 3000)
+- Changed default PORT from 3000 to 5000 for Replit compatibility
 - Added start script to package.json
 - Created .gitignore for Node.js
-- Installed system dependency: libuuid (required for canvas)
+- Installed system dependencies: util-linux, libuuid, pkg-config (required for canvas native bindings)
+- Fixed @napi-rs/canvas and canvas native binding issues
+- Created workflow to run server on port 5000 with webview output
+- Configured deployment for autoscale (stateless API server)
 - Created documentation (this file and README.md)
-- Verified API is functional (tested musicard2 endpoints successfully)
+- Verified API is functional (tested musicard2 and ping endpoints successfully)
 - Added `/ping` endpoint - Futuristic network status banner with cyberpunk style
 
 ## User Preferences

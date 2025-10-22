@@ -108,7 +108,7 @@ npm install
 npm start
 ```
 
-The server will start on port 3000.
+The server will start on port 5000 (or use the PORT environment variable if set).
 
 ## API Response
 
@@ -127,5 +127,9 @@ Content-Type: image/png
 
 ## System Requirements
 
-Requires the following system library:
-- libuuid (for canvas native bindings)
+Requires the following system libraries (for canvas native bindings):
+- util-linux (provides libuuid)
+- libuuid
+- pkg-config
+
+These are automatically configured in the Replit environment.

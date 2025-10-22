@@ -5,7 +5,7 @@ const canvasfyRoutes = require('./arquivos/canvasfy');
 const pingRoutes = require('./arquivos/ping');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 app.use('/', musicardRoutes);
 app.use('/', canvasfyRoutes);
