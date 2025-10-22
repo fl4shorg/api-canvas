@@ -14,6 +14,20 @@ const isValidImageUrl = (url) => {
   }
 };
 
+function roundRect(ctx, x, y, width, height, radius) {
+  ctx.beginPath();
+  ctx.moveTo(x + radius, y);
+  ctx.lineTo(x + width - radius, y);
+  ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+  ctx.lineTo(x + width, y + height - radius);
+  ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+  ctx.lineTo(x + radius, y + height);
+  ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+  ctx.lineTo(x, y + radius);
+  ctx.quadraticCurveTo(x, y, x + radius, y);
+  ctx.closePath();
+}
+
 async function drawBanner(config) {
   const W = 1365;
   const H = 618;
@@ -96,14 +110,12 @@ async function drawBanner(config) {
   ctx.save();
   ctx.translate(30, 30);
   
-  ctx.beginPath();
-  ctx.roundRect(0, 0, 22, 24, 4);
+  roundRect(ctx, 0, 0, 22, 24, 4);
   ctx.strokeStyle = "#00f7ff";
   ctx.lineWidth = 2;
   ctx.stroke();
   
-  ctx.beginPath();
-  ctx.roundRect(0, 0, 22, 6, 4);
+  roundRect(ctx, 0, 0, 22, 6, 4);
   ctx.fillStyle = "#00f7ff";
   ctx.fill();
   
@@ -172,8 +184,7 @@ async function drawBanner(config) {
   ctx.shadowBlur = 15;
   ctx.strokeStyle = "#00f7ff";
   ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.roundRect(leftPanelX, leftPanelY, leftPanelW, leftPanelH, 15);
+  roundRect(ctx, leftPanelX, leftPanelY, leftPanelW, leftPanelH, 15);
   ctx.stroke();
   ctx.shadowBlur = 0;
   
@@ -416,8 +427,7 @@ async function drawBanner(config) {
   ctx.shadowBlur = 15;
   ctx.strokeStyle = "#00f7ff";
   ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.roundRect(rightPanelBaseX, latPanelY, latPanelW, latPanelH, 15);
+  roundRect(ctx, rightPanelBaseX, latPanelY, latPanelW, latPanelH, 15);
   ctx.stroke();
   ctx.shadowBlur = 0;
   
@@ -485,8 +495,7 @@ async function drawBanner(config) {
   ctx.shadowBlur = 15;
   ctx.strokeStyle = "#00f7ff";
   ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.roundRect(rightPanelBaseX, lapPanelY, latPanelW, latPanelH, 15);
+  roundRect(ctx, rightPanelBaseX, lapPanelY, latPanelW, latPanelH, 15);
   ctx.stroke();
   ctx.shadowBlur = 0;
   
@@ -530,8 +539,7 @@ async function drawBanner(config) {
   ctx.shadowBlur = 15;
   ctx.strokeStyle = "#00f7ff";
   ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.roundRect(rightPanelBaseX, latGraphY, 120, latGraphH, 15);
+  roundRect(ctx, rightPanelBaseX, latGraphY, 120, latGraphH, 15);
   ctx.stroke();
   ctx.shadowBlur = 0;
   
@@ -557,8 +565,7 @@ async function drawBanner(config) {
   ctx.shadowBlur = 15;
   ctx.strokeStyle = "#00f7ff";
   ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.roundRect(uploadPanelX, latGraphY, 120, latGraphH, 15);
+  roundRect(ctx, uploadPanelX, latGraphY, 120, latGraphH, 15);
   ctx.stroke();
   ctx.shadowBlur = 0;
   
@@ -592,8 +599,7 @@ async function drawBanner(config) {
   ctx.shadowBlur = 15;
   ctx.strokeStyle = "#00f7ff";
   ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.roundRect(rightPanelBaseX, downloadPanelY, 120, latGraphH, 15);
+  roundRect(ctx, rightPanelBaseX, downloadPanelY, 120, latGraphH, 15);
   ctx.stroke();
   ctx.shadowBlur = 0;
   
@@ -628,8 +634,7 @@ async function drawBanner(config) {
   ctx.shadowBlur = 15;
   ctx.strokeStyle = "#00f7ff";
   ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.roundRect(systemPanelX, downloadPanelY, 120, latGraphH, 15);
+  roundRect(ctx, systemPanelX, downloadPanelY, 120, latGraphH, 15);
   ctx.stroke();
   ctx.shadowBlur = 0;
   
