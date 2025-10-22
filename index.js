@@ -7,11 +7,11 @@ const canvasfyRoutes = require('./arquivos/canvasfy');
 
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-app.use('/', musicardRoutes); // Todas as rotas do musicard.js
+app.use('/', musicardRoutes);
 app.use('/', canvasfyRoutes);
 app.use('/', musicard2);
 app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Servidor rodando em http://localhost:${PORT}`);
+    console.log(`Servidor rodando em http://0.0.0.0:${PORT}`);
 });

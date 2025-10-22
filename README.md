@@ -1,0 +1,102 @@
+# Canvas API
+
+A Node.js API server that generates dynamic images using canvas libraries. Perfect for Discord bots, social media applications, and any service that needs programmatic image generation.
+
+## Available Endpoints
+
+### Music Cards (Musicard2)
+Generate music player card images with different themes:
+
+- `GET /musicard2/classic` - Classic theme
+- `GET /musicard2/classicpro` - ClassicPro theme
+- `GET /musicard2/dynamic` - Dynamic theme
+- `GET /musicard2/mini` - Mini theme
+- `GET /musicard2/upcoming` - Upcoming tracks
+
+**Query Parameters:**
+- `title` (required) - Song title
+- `artist` - Artist name
+- `cover` - Cover image URL
+- `wallpaper` - Background image URL
+- `progress` - Progress percentage (0-100)
+- `startTime` - Start time (e.g., "0:00")
+- `endTime` - End time (e.g., "3:30")
+
+**Example:**
+```
+GET /musicard2/classic?title=My%20Song&artist=Artist%20Name&progress=50&startTime=0:00&endTime=3:30
+```
+
+### Music Cards (Musicard Quartz)
+Generate music cards with Quartz-style themes:
+
+- `GET /musicard/quartz` - Quartz+ theme
+- `GET /musicard/onepiece` - OnePiece+ theme
+- `GET /musicard/vector` - Vector+ theme
+
+**Query Parameters:**
+- `title` (required) - Song title
+- `artist` - Artist name
+- `cover` - Cover image URL
+- `wallpaper` - Background image URL
+- `color` - Theme color
+- `minutes` - Duration minutes
+- `seconds` - Duration seconds
+
+**Example:**
+```
+GET /musicard/quartz?title=My%20Song&artist=Artist%20Name&minutes=3&seconds=30
+```
+
+### Discord-Style Cards (Canvafy)
+
+User engagement and social cards:
+
+- `GET /welcome` - Welcome card
+- `GET /goodbye` - Goodbye/leave card
+- `GET /rank` - Rank/XP card
+- `GET /profile` - User profile card
+- `GET /level` - Level up card
+- `GET /ship` - Relationship ship card
+
+Social media cards:
+
+- `GET /instagram` - Instagram profile card
+- `GET /tweet` - Twitter/X tweet card
+- `GET /spotify` - Spotify now playing card
+
+Utility cards:
+
+- `GET /captcha` - CAPTCHA image
+- `GET /security` - Security verification card
+
+*Note: These endpoints have example hardcoded data. For production use, they should accept query parameters.*
+
+## Running Locally
+
+```bash
+npm install
+npm start
+```
+
+The server will start on port 3000.
+
+## API Response
+
+All endpoints return PNG images with appropriate headers:
+```
+Content-Type: image/png
+```
+
+## Dependencies
+
+- Express.js - Web framework
+- canvas - HTML5 Canvas implementation
+- canvafy - Discord-style image generation
+- musicard - Music card generation
+- musicard-quartz - Additional music card themes
+
+## System Requirements
+
+Requires the following system library:
+- libuuid (for canvas native bindings)
