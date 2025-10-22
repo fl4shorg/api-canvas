@@ -110,6 +110,56 @@ Utility cards:
 - `GET /security` - Security verification card
   - Parameters: `avatar`, `createdTimestamp`, `suspectTimestamp`, `background`, `border`, `avatarBorder`, `locale`
 
+### Knights Canvas Cards
+
+Discord bot image generation with various templates:
+
+**Welcome & Goodbye Cards:**
+
+- `GET /knights/welcome` - Welcome card (style 1)
+  - Parameters: `username`, `guildName`, `guildIcon`, `memberCount`, `avatar`, `background`
+- `GET /knights/welcome2` - Welcome card (style 2)
+  - Parameters: `username`, `groupname`, `member`, `avatar`, `background`
+- `GET /knights/goodbye` - Goodbye/leave card
+  - Parameters: `username`, `guildName`, `guildIcon`, `memberCount`, `avatar`, `background`
+
+**Example:**
+```
+GET /knights/welcome?username=JohnDoe&guildName=MyServer&memberCount=1000&avatar=URL&background=URL
+```
+
+**Level & Rank Cards:**
+
+- `GET /knights/rank` - XP/Rank progress card
+  - Parameters: `username`, `avatar`, `background`, `needxp`, `currxp`, `level`, `rank`
+- `GET /knights/levelup` - Level up notification card
+  - Parameters: `avatar`
+
+**Example:**
+```
+GET /knights/rank?username=Player1&level=10&currxp=500&needxp=1000&avatar=URL
+GET /knights/levelup?avatar=URL
+```
+
+**Image Filters & Effects:**
+
+- `GET /knights/horny` - Horny jail filter
+  - Parameters: `avatar`
+- `GET /knights/jojo` - JoJo anime style filter
+  - Parameters: `image`
+- `GET /knights/patrick` - Patrick meme template
+  - Parameters: `avatar`
+- `GET /knights/bonk` - Bonk meme with two avatars
+  - Parameters: `avatar1`, `avatar2`
+- `GET /knights/burn` - SpongeBob burning paper meme
+  - Parameters: `avatar`
+
+**Example:**
+```
+GET /knights/bonk?avatar1=URL1&avatar2=URL2
+GET /knights/horny?avatar=URL
+```
+
 ## Running Locally
 
 ```bash
@@ -133,6 +183,7 @@ Content-Type: image/png
 - canvafy - Discord-style image generation
 - musicard - Music card generation
 - musicard-quartz - Additional music card themes
+- knights-canvas - Discord bot image generation (welcome, rank, memes)
 
 ## System Requirements
 

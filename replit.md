@@ -11,6 +11,7 @@ Backend API service (Express.js)
 - **canvafy**: Image generation for Discord-style cards (welcome, rank, profile, etc.)
 - **musicard**: Music card generation (Classic, ClassicPro, Dynamic, Mini, Upcoming themes)
 - **musicard-quartz**: Music card generation (Quartz+, OnePiece+, Vector+ themes)
+- **knights-canvas**: Discord bot image generation (welcome, goodbye, rank, level-up, meme filters)
 - **canvas / @napi-rs/canvas**: Canvas rendering libraries
 
 ## API Endpoints
@@ -43,6 +44,18 @@ Backend API service (Express.js)
 - `/musicard2/mini` - Mini theme music card
 - `/musicard2/upcoming` - Upcoming tracks card
 
+### Knights Canvas Routes
+- `/knights/welcome` - Welcome card style 1 (params: username, guildName, guildIcon, memberCount, avatar, background)
+- `/knights/welcome2` - Welcome card style 2 (params: username, groupname, member, avatar, background)
+- `/knights/goodbye` - Goodbye/leave card (params: username, guildName, guildIcon, memberCount, avatar, background)
+- `/knights/rank` - XP/Rank progress card (params: username, avatar, background, needxp, currxp, level, rank)
+- `/knights/levelup` - Level up notification (params: avatar)
+- `/knights/horny` - Horny jail filter (params: avatar)
+- `/knights/jojo` - JoJo anime style filter (params: image)
+- `/knights/patrick` - Patrick meme template (params: avatar)
+- `/knights/bonk` - Bonk meme with two avatars (params: avatar1, avatar2)
+- `/knights/burn` - SpongeBob burning paper meme (params: avatar)
+
 ## Project Structure
 ```
 .
@@ -51,6 +64,8 @@ Backend API service (Express.js)
 │   ├── canvasfy.js      # Canvafy image routes
 │   ├── musicard.js      # Musicard-quartz routes
 │   ├── musicard2.js     # Musicard routes
+│   ├── ping.js          # Ping network status banner
+│   ├── welcome2.js      # Knights-canvas routes (NEW)
 │   ├── welcome1.js      # WelCard route (unused)
 │   └── attp.js          # Empty file
 ├── package.json         # Dependencies and scripts
@@ -80,6 +95,12 @@ The following system packages are required for canvas image generation:
 - **Workflow Configuration**: Created "Server" workflow running on port 5000 with webview output
 - **Deployment Configuration**: Set up autoscale deployment with `npm start` command
 - **Testing**: Verified API is working correctly - ping endpoint returns beautiful cyberpunk PNG banners
+- **Knights Canvas Integration**: Added knights-canvas library with 10 new endpoints
+  - Installed knights-canvas npm package
+  - Created `arquivos/welcome2.js` with all knights-canvas routes
+  - Added endpoints for welcome cards, goodbye cards, rank cards, level-up, and meme filters (horny, jojo, patrick, bonk, burn)
+  - Updated index.js to include welcome2 routes
+  - Updated documentation in README.md and replit.md with all new endpoints
 - **Server Status**: Running successfully on http://0.0.0.0:5000
 
 ## User Preferences
