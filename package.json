@@ -1,0 +1,22 @@
+{
+  "name": "api-canvas",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@napi-rs/canvas": "^0.1.80",
+    "canvafy": "^7.2.1",
+    "canvas": "^3.2.0",
+    "express": "^5.1.0",
+    "gif-encoder-2": "^1.0.5",
+    "gifwrap": "^0.10.1",
+    "musicard": "^2.0.5",
+    "musicard-quartz": "^1.0.0"
+  },
+  "description": ""
+}
