@@ -11,6 +11,7 @@ Backend API service (Express.js)
 - **canvafy**: Image generation for Discord-style cards (welcome, rank, profile, etc.)
 - **musicard**: Music card generation (Classic, ClassicPro, Dynamic, Mini, Upcoming themes)
 - **musicard-quartz**: Music card generation (Quartz+, OnePiece+, Vector+ themes)
+- **musify**: Professional music cards with glass design and auto color extraction
 - **knights-canvas**: Discord bot image generation (welcome, goodbye, rank, level-up, meme filters)
 - **canvas / @napi-rs/canvas**: Canvas rendering libraries
 
@@ -20,6 +21,10 @@ Backend API service (Express.js)
 - `/ping` - Banner de status de rede futurista (cyberpunk style)
 - `/ping2` - Banner neon simplificado com avatar centralizado (estilo premium neon)
   - Parâmetros: name, speed, label, system, datetime, avatar, wallpaper
+
+### Musify Routes
+- `/musify` - Music card com glass design moderno e extração automática de cores
+  - Parâmetros: thumbnail, name, author, requester, progress, startTime, endTime, scale, backgroundColor, backgroundImage, backgroundBlur, backgroundDarkness, nameColor, authorColor, requesterColor, progressColor, timeColor
 
 ### Canvafy Routes
 - `/welcome` - Welcome card (params: avatar, background, title, description, border, avatarBorder, opacity)
@@ -67,7 +72,8 @@ Backend API service (Express.js)
 │   ├── musicard.js      # Musicard-quartz routes
 │   ├── musicard2.js     # Musicard routes
 │   ├── ping.js          # Ping network status banner
-│   ├── ping2.js         # Ping2 neon-style banner (NEW)
+│   ├── ping2.js         # Ping2 neon-style banner
+│   ├── musify.js        # Musify glass design cards (NEW)
 │   ├── welcome2.js      # Knights-canvas routes
 │   ├── welcome1.js      # WelCard route (unused)
 │   └── attp.js          # Empty file
@@ -103,6 +109,12 @@ The following system packages are required for canvas image generation:
   - Features: centered circular avatar, robot icon, speed display, neon glow effects
   - Parameters: name, speed, label, system, datetime, avatar, wallpaper
   - Visual style: blue gradient background with cyan neon accents
+  - Tested and confirmed working
+- **Musify Integration**: Added professional music card generator with glass design
+  - Library: `musify` npm package (v1.1.1)
+  - File: `arquivos/musify.js`
+  - Features: glass design, auto color extraction, progress bar, blur effects
+  - Parameters: thumbnail, name, author, requester, progress, times, colors, scale
   - Tested and confirmed working
 - **Server Status**: Running successfully on http://0.0.0.0:5000
 

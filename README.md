@@ -60,6 +60,42 @@ GET /ping2?name=GODDARD&speed=850&label=VELOCIDADE&system=LINUX&avatar=URL&wallp
 - Date/time indicators in corners
 - Blue gradient background (or custom wallpaper)
 
+### Musify Glass Cards
+Generate modern music cards with glass design and auto color extraction:
+
+- `GET /musify` - Professional music card with glass design effect
+
+**Query Parameters:**
+- `thumbnail` - URL da imagem/capa da música (padrão: imagem exemplo)
+- `name` - Título da música (padrão: "Musify")
+- `author` - Nome do artista (padrão: "Unknown Artist")
+- `requester` - Usuário que solicitou (padrão: "Unknown")
+- `progress` - Progresso em % 0-100 (padrão: "0")
+- `startTime` - Tempo atual MM:SS (padrão: "0:00")
+- `endTime` - Duração total MM:SS (padrão: "0:00")
+- `scale` - Escala 0.5-2 (padrão: "1")
+- `backgroundColor` - Cor de fundo (padrão: "#1c1c1c")
+- `backgroundImage` - URL da imagem de fundo (opcional)
+- `backgroundBlur` - Desfoque do fundo 0-50 (padrão: "10")
+- `backgroundDarkness` - Escuridão do fundo 0-1 (padrão: "0.9")
+- `nameColor` - Cor do título (padrão: "auto" - extração automática)
+- `authorColor` - Cor do artista (padrão: "#FFFFFF")
+- `requesterColor` - Cor do solicitante (padrão: "auto")
+- `progressColor` - Cor da barra de progresso (padrão: "auto")
+- `timeColor` - Cor dos tempos (padrão: "#FFFFFF")
+
+**Example:**
+```
+GET /musify?name=Bohemian%20Rhapsody&author=Queen&requester=MusicLover&progress=45&startTime=2:15&endTime=5:55&thumbnail=URL
+```
+
+**Features:**
+- Modern glass design with rounded corners
+- Automatic color extraction from thumbnail
+- Progress bar animation
+- Background blur and darkness effects
+- Fully customizable colors and scale
+
 ### Music Cards (Musicard2)
 Generate music player card images with different themes:
 
