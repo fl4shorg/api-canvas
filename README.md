@@ -82,24 +82,33 @@ GET /musicard/quartz?title=My%20Song&artist=Artist%20Name&minutes=3&seconds=30
 User engagement and social cards:
 
 - `GET /welcome` - Welcome card
+  - Parameters: `avatar`, `background`, `title`, `description`, `border`, `avatarBorder`, `opacity`
 - `GET /goodbye` - Goodbye/leave card
+  - Parameters: `avatar`, `background`, `title`, `description`, `border`, `avatarBorder`, `opacity`
 - `GET /rank` - Rank/XP card
+  - Parameters: `avatar`, `background`, `username`, `border`, `level`, `rank`, `currentXp`, `requiredXp`
 - `GET /profile` - User profile card
+  - Parameters: `userId`, `activity`, `border`
 - `GET /level` - Level up card
+  - Parameters: `avatar`, `background`, `username`, `currentLevel`, `nextLevel`, `border`
 - `GET /ship` - Relationship ship card
+  - Parameters: `avatar1`, `avatar2`, `background`, `border`, `opacity`
 
 Social media cards:
 
 - `GET /instagram` - Instagram profile card
+  - Parameters: `avatar`, `username`, `postImage`, `theme`, `verified`
 - `GET /tweet` - Twitter/X tweet card
+  - Parameters: `avatar`, `username`, `comment`, `theme`, `verified`
 - `GET /spotify` - Spotify now playing card
+  - Parameters: `image`, `title`, `artist`, `album`, `start`, `end`
 
 Utility cards:
 
 - `GET /captcha` - CAPTCHA image
+  - Parameters: `captcha`, `background`, `border`, `opacity`
 - `GET /security` - Security verification card
-
-*Note: These endpoints have example hardcoded data. For production use, they should accept query parameters.*
+  - Parameters: `avatar`, `createdTimestamp`, `suspectTimestamp`, `background`, `border`, `avatarBorder`, `locale`
 
 ## Running Locally
 

@@ -5,14 +5,24 @@ const canvafy = require('canvafy');
 // Rota de boas-vindas
 router.get('/welcome', async (req, res) => {
   try {
+    const {
+      avatar = "https://cdn.discordapp.com/embed/avatars/0.png",
+      background = "https://images.unsplash.com/photo-1579546929518-9e396f3cc809",
+      title = "Bem-vindo!",
+      description = "Entrou no servidor ✨",
+      border = "#FFFFFF",
+      avatarBorder = "#FFFFFF",
+      opacity = "0.4"
+    } = req.query;
+
     const image = await new canvafy.WelcomeLeave()
-      .setAvatar("https://cdn.discordapp.com/avatars/123456789012345678/abcdef1234567890.png?size=1024")
-      .setBackground("image", "https://example.com/background.jpg")
-      .setTitle("Bem-vindo!")
-      .setDescription("Flash entrou no servidor ✨")
-      .setBorder("#FFFFFF")
-      .setAvatarBorder("#FFFFFF")
-      .setOverlayOpacity(0.4)
+      .setAvatar(avatar)
+      .setBackground("image", background)
+      .setTitle(title)
+      .setDescription(description)
+      .setBorder(border)
+      .setAvatarBorder(avatarBorder)
+      .setOverlayOpacity(parseFloat(opacity))
       .build();
 
     res.set('Content-Type', 'image/png');
@@ -26,14 +36,24 @@ router.get('/welcome', async (req, res) => {
 // Rota de despedida
 router.get('/goodbye', async (req, res) => {
   try {
+    const {
+      avatar = "https://cdn.discordapp.com/embed/avatars/1.png",
+      background = "#000000",
+      title = "Adeus!",
+      description = "Saiu do servidor 💔",
+      border = "#FF0000",
+      avatarBorder = "#FF0000",
+      opacity = "0.5"
+    } = req.query;
+
     const image = await new canvafy.WelcomeLeave()
-      .setAvatar("https://cdn.discordapp.com/avatars/987654321098765432/abcdef1234567890.png?size=1024")
-      .setBackground("color", "#000000")
-      .setTitle("Adeus!")
-      .setDescription("Flash saiu do servidor 💔")
-      .setBorder("#FF0000")
-      .setAvatarBorder("#FF0000")
-      .setOverlayOpacity(0.5)
+      .setAvatar(avatar)
+      .setBackground("color", background)
+      .setTitle(title)
+      .setDescription(description)
+      .setBorder(border)
+      .setAvatarBorder(avatarBorder)
+      .setOverlayOpacity(parseFloat(opacity))
       .build();
 
     res.set('Content-Type', 'image/png');
@@ -47,15 +67,26 @@ router.get('/goodbye', async (req, res) => {
 // Rota de rank
 router.get('/rank', async (req, res) => {
   try {
+    const {
+      avatar = "https://cdn.discordapp.com/embed/avatars/2.png",
+      background = "#1E1E2E",
+      username = "Usuário",
+      border = "#00FFFF",
+      level = "1",
+      rank = "1",
+      currentXp = "0",
+      requiredXp = "100"
+    } = req.query;
+
     const image = await new canvafy.Rank()
-      .setAvatar("https://cdn.discordapp.com/avatars/234567890123456789/abcdef1234567890.png?size=1024")
-      .setBackground("color", "#1E1E2E")
-      .setUsername("Flash")
-      .setBorder("#00FFFF")
-      .setLevel(12)
-      .setRank(3)
-      .setCurrentXp(350)
-      .setRequiredXp(500)
+      .setAvatar(avatar)
+      .setBackground("color", background)
+      .setUsername(username)
+      .setBorder(border)
+      .setLevel(parseInt(level))
+      .setRank(parseInt(rank))
+      .setCurrentXp(parseInt(currentXp))
+      .setRequiredXp(parseInt(requiredXp))
       .build();
 
     res.set('Content-Type', 'image/png');
@@ -69,13 +100,16 @@ router.get('/rank', async (req, res) => {
 // Rota de perfil
 router.get('/profile', async (req, res) => {
   try {
+    const {
+      userId = "123456789012345678",
+      activity = "Playing a game",
+      border = "#FFFFFF"
+    } = req.query;
+
     const image = await new canvafy.Profile()
-      .setAvatar("https://cdn.discordapp.com/avatars/345678901234567890/abcdef1234567890.png?size=1024")
-      .setBackground("image", "https://example.com/profile-background.jpg")
-      .setStatus("online")
-      .setName("Flash")
-      .setBio("Desenvolvedor de bots 🧠💻")
-      .setBorder("#FFFFFF")
+      .setUser(userId)
+      .setActivity(activity)
+      .setBorder(border)
       .build();
 
     res.set('Content-Type', 'image/png');
@@ -89,12 +123,21 @@ router.get('/profile', async (req, res) => {
 // Rota de nível XP
 router.get('/level', async (req, res) => {
   try {
+    const {
+      avatar = "https://cdn.discordapp.com/embed/avatars/4.png",
+      background = "#2E2E2E",
+      username = "Usuário",
+      currentLevel = "1",
+      nextLevel = "2",
+      border = "#FFD700"
+    } = req.query;
+
     const image = await new canvafy.LevelUp()
-      .setAvatar("https://cdn.discordapp.com/avatars/456789012345678901/abcdef1234567890.png?size=1024")
-      .setBackground("color", "#2E2E2E")
-      .setUsername("Flash")
-      .setLevel(15)
-      .setBorder("#FFD700")
+      .setAvatar(avatar)
+      .setBackground("color", background)
+      .setUsername(username)
+      .setLevels(parseInt(currentLevel), parseInt(nextLevel))
+      .setBorder(border)
       .build();
 
     res.set('Content-Type', 'image/png');
@@ -108,14 +151,19 @@ router.get('/level', async (req, res) => {
 // Rota de ship
 router.get('/ship', async (req, res) => {
   try {
+    const {
+      avatar1 = "https://cdn.discordapp.com/embed/avatars/0.png",
+      avatar2 = "https://cdn.discordapp.com/embed/avatars/1.png",
+      background = "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2",
+      border = "#FF00FF",
+      opacity = "0.5"
+    } = req.query;
+
     const image = await new canvafy.Ship()
-      .setAvatars(
-        "https://cdn.discordapp.com/avatars/567890123456789012/abcdef1234567890.png?size=1024",
-        "https://cdn.discordapp.com/avatars/678901234567890123/abcdef1234567890.png?size=1024"
-      )
-      .setBackground("image", "https://example.com/ship-background.jpg")
-      .setBorder("#FF00FF")
-      .setOverlayOpacity(0.5)
+      .setAvatars(avatar1, avatar2)
+      .setBackground("image", background)
+      .setBorder(border)
+      .setOverlayOpacity(parseFloat(opacity))
       .build();
 
     res.set('Content-Type', 'image/png');
@@ -129,14 +177,20 @@ router.get('/ship', async (req, res) => {
 // Rota de Instagram
 router.get('/instagram', async (req, res) => {
   try {
+    const {
+      avatar = "https://cdn.discordapp.com/embed/avatars/2.png",
+      username = "usuario",
+      postImage = "https://images.unsplash.com/photo-1611162617474-5b21e879e113",
+      theme = "dark",
+      verified = "false"
+    } = req.query;
+
     const image = await new canvafy.Instagram()
-      .setAvatar("https://cdn.discordapp.com/avatars/789012345678901234/abcdef1234567890.png?size=1024")
-      .setUsername("flash_dev")
-      .setFollowers(1500)
-      .setFollowing(200)
-      .setPosts(100)
-      .setBackground("image", "https://example.com/instagram-background.jpg")
-      .setBorder("#FF1493")
+      .setAvatar(avatar)
+      .setUser({ username })
+      .setPostImage(postImage)
+      .setTheme(theme)
+      .setVerified(verified === "true")
       .build();
 
     res.set('Content-Type', 'image/png');
@@ -150,12 +204,20 @@ router.get('/instagram', async (req, res) => {
 // Rota de Tweet
 router.get('/tweet', async (req, res) => {
   try {
+    const {
+      avatar = "https://cdn.discordapp.com/embed/avatars/3.png",
+      username = "usuario",
+      comment = "Olá mundo! 👋",
+      theme = "dark",
+      verified = "false"
+    } = req.query;
+
     const image = await new canvafy.Tweet()
-      .setAvatar("https://cdn.discordapp.com/avatars/890123456789012345/abcdef1234567890.png?size=1024")
-      .setUsername("flash_dev")
-      .setContent("Estou aprendendo a usar o Canvafy! #Canvafy #NodeJS")
-      .setBackground("image", "https://example.com/tweet-background.jpg")
-      .setBorder("#1DA1F2")
+      .setAvatar(avatar)
+      .setUser(username)
+      .setComment(comment)
+      .setTheme(theme)
+      .setVerified(verified === "true")
       .build();
 
     res.set('Content-Type', 'image/png');
@@ -169,18 +231,28 @@ router.get('/tweet', async (req, res) => {
 // Rota de Spotify
 router.get('/spotify', async (req, res) => {
   try {
-    const image = await new canvafy.Spotify()
-      .setAvatar("https://cdn.discordapp.com/avatars/901234567890123456/abcdef1234567890.png?size=1024")
-      .setUsername("flash_dev")
-      .setSong("Blinding Lights")
-      .setArtist("The Weeknd")
-      .setAlbum("After Hours")
-      .setBackground("image", "https://example.com/spotify-background.jpg")
-      .setBorder("#1DB954")
+    const {
+      image = "https://images.unsplash.com/photo-1614680376593-902f74cf0d41",
+      title = "Nome da Música",
+      artist = "Nome do Artista",
+      album = "Nome do Álbum",
+      start = "30000",
+      end = "180000"
+    } = req.query;
+
+    const startTime = parseInt(start) || 30000;
+    const endTime = parseInt(end) || 180000;
+
+    const spotifyCard = await new canvafy.oldSpotify()
+      .setAuthor(artist)
+      .setAlbum(album)
+      .setTimestamp(startTime, endTime)
+      .setImage(image)
+      .setTitle(title)
       .build();
 
     res.set('Content-Type', 'image/png');
-    res.send(image);
+    res.send(spotifyCard);
   } catch (err) {
     console.error('spotify error', err);
     res.status(500).send('Erro ao gerar imagem de Spotify');
@@ -190,10 +262,18 @@ router.get('/spotify', async (req, res) => {
 // Rota de Captcha
 router.get('/captcha', async (req, res) => {
   try {
+    const {
+      captcha = "abcd12",
+      background = "#F0F0F0",
+      border = "#000000",
+      opacity = "0.5"
+    } = req.query;
+
     const image = await new canvafy.Captcha()
-      .setText("ABCD1234")
-      .setBackground("color", "#F0F0F0")
-      .setBorder("#000000")
+      .setCaptchaKey(captcha)
+      .setBackground("color", background)
+      .setBorder(border)
+      .setOverlayOpacity(parseFloat(opacity))
       .build();
 
     res.set('Content-Type', 'image/png');
@@ -207,12 +287,24 @@ router.get('/captcha', async (req, res) => {
 // Rota de Segurança
 router.get('/security', async (req, res) => {
   try {
+    const {
+      avatar = "https://cdn.discordapp.com/embed/avatars/0.png",
+      createdTimestamp = Date.now().toString(),
+      suspectTimestamp = Date.now().toString(),
+      background = "https://images.unsplash.com/photo-1614064641938-3bbee52942c7",
+      border = "#FF4500",
+      avatarBorder = "#FFFFFF",
+      locale = "pt"
+    } = req.query;
+
     const image = await new canvafy.Security()
-      .setAvatar("https://cdn.discordapp.com/avatars/012345678901234567/abcdef1234567890.png?size=1024")
-      .setUsername("flash_dev")
-      .setStatus("online")
-      .setBackground("image", "https://example.com/security-background.jpg")
-      .setBorder("#FF4500")
+      .setAvatar(avatar)
+      .setAvatarBorder(avatarBorder)
+      .setCreatedTimestamp(parseInt(createdTimestamp))
+      .setSuspectTimestamp(parseInt(suspectTimestamp))
+      .setBackground("image", background)
+      .setBorder(border)
+      .setLocale(locale)
       .build();
 
     res.set('Content-Type', 'image/png');

@@ -19,17 +19,17 @@ Backend API service (Express.js)
 - `/ping` - Banner de status de rede futurista (cyberpunk style)
 
 ### Canvafy Routes
-- `/welcome` - Welcome card
-- `/goodbye` - Goodbye/leave card
-- `/rank` - Rank/XP card
-- `/profile` - User profile card
-- `/level` - Level up card
-- `/ship` - Relationship ship card
-- `/instagram` - Instagram profile card
-- `/tweet` - Twitter/X tweet card
-- `/spotify` - Spotify now playing card
-- `/captcha` - CAPTCHA image
-- `/security` - Security verification card
+- `/welcome` - Welcome card (params: avatar, background, title, description, border, avatarBorder, opacity)
+- `/goodbye` - Goodbye card (params: avatar, background, title, description, border, avatarBorder, opacity)
+- `/rank` - Rank/XP card (params: avatar, background, username, border, level, rank, currentXp, requiredXp)
+- `/profile` - User profile card (params: userId, activity, border)
+- `/level` - Level up card (params: avatar, background, username, currentLevel, nextLevel, border)
+- `/ship` - Relationship ship card (params: avatar1, avatar2, background, border, opacity)
+- `/instagram` - Instagram profile card (params: avatar, username, postImage, theme, verified)
+- `/tweet` - Twitter/X tweet card (params: avatar, username, comment, theme, verified)
+- `/spotify` - Spotify now playing card (params: image, title, artist, album, start, end)
+- `/captcha` - CAPTCHA image (params: captcha, background, border, opacity)
+- `/security` - Security verification card (params: avatar, createdTimestamp, suspectTimestamp, background, border, avatarBorder, locale)
 
 ### Musicard Quartz Routes
 - `/musicard/quartz` - Quartz+ theme music card
