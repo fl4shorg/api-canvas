@@ -15,6 +15,9 @@ Backend API service (Express.js)
 
 ## API Endpoints
 
+### Ping Routes
+- `/ping` - Banner de status de rede futurista (cyberpunk style)
+
 ### Canvafy Routes
 - `/welcome` - Welcome card
 - `/goodbye` - Goodbye/leave card
@@ -73,6 +76,7 @@ The following system packages are required for canvas image generation:
 - Installed system dependency: libuuid (required for canvas)
 - Created documentation (this file and README.md)
 - Verified API is functional (tested musicard2 endpoints successfully)
+- Added `/ping` endpoint - Futuristic network status banner with cyberpunk style
 
 ## User Preferences
 None set yet.

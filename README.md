@@ -4,6 +4,35 @@ A Node.js API server that generates dynamic images using canvas libraries. Perfe
 
 ## Available Endpoints
 
+### Ping Banner
+Generate a futuristic network status banner with user info and network statistics:
+
+- `GET /ping` - Network status banner (estilo futurista cyberpunk)
+
+**Query Parameters:**
+- `name` - Nome do usuário (padrão: "NEEXT")
+- `avatar` - URL da imagem do avatar
+- `wallpaper` - URL da imagem de fundo
+- `datetime` - Data e hora customizada (formato: "DD/MM/YYYY - HH:MM")
+- `speed` - Velocidade de conexão (padrão: "999")
+- `latency` - Percentual de latência 0-100 (padrão: "2")
+- `pingMs` - Ping em milissegundos (padrão: "15")
+- `loss` - Perda de pacotes em % (padrão: "0")
+- `upload` - Velocidade de upload em MB/s (padrão: "850")
+- `download` - Velocidade de download em MB/s (padrão: "950")
+- `cpu` - Uso de CPU em % (padrão: "45")
+- `ram` - Uso de RAM em % (padrão: "62")
+- `disk` - Uso de disco em % (padrão: "78")
+- `os` - Sistema operacional (padrão: "LINUX")
+- `id` - ID do usuário (padrão: "0000000000")
+- `vip` - Status VIP (padrão: "PREMIUM")
+- `rank` - Rank do usuário (padrão: "#1")
+
+**Example:**
+```
+GET /ping?name=GODDARD&speed=999&latency=2&pingMs=15&loss=0&upload=850&os=LINUX
+```
+
 ### Music Cards (Musicard2)
 Generate music player card images with different themes:
 
