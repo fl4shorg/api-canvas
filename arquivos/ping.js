@@ -170,34 +170,55 @@ async function drawBanner(config) {
   const smallAvatarY = leftPanelY + 60;
   const smallAvatarR = 40;
 
+  ctx.save();
+  ctx.translate(smallAvatarX, smallAvatarY);
+  
+  // Desenhar hexágono de fundo
+  ctx.beginPath();
+  for (let i = 0; i < 6; i++) {
+    const angle = (i / 6) * Math.PI * 2 - Math.PI / 2;
+    const x = Math.cos(angle) * (smallAvatarR + 8);
+    const y = Math.sin(angle) * (smallAvatarR + 8);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+  
+  // Fundo do hexágono
+  ctx.fillStyle = "rgba(0, 247, 255, 0.1)";
+  ctx.fill();
+  
+  // Borda do hexágono
+  ctx.strokeStyle = "#00f7ff";
+  ctx.lineWidth = 2.5;
+  ctx.shadowColor = "#00f7ff";
+  ctx.shadowBlur = 10;
+  ctx.stroke();
+  ctx.shadowBlur = 0;
+  
+  // Clip hexagonal para a imagem
   if (avatarImg) {
     ctx.save();
     ctx.beginPath();
-    ctx.arc(smallAvatarX, smallAvatarY, smallAvatarR, 0, Math.PI * 2);
-    ctx.closePath();
-    ctx.clip();
-    const img = avatarImg;
-    const r = Math.max((smallAvatarR * 2) / img.width, (smallAvatarR * 2) / img.height);
-    const iw = img.width * r;
-    const ih = img.height * r;
-    ctx.drawImage(img, smallAvatarX - iw / 2, smallAvatarY - ih / 2, iw, ih);
-    ctx.restore();
-    ctx.strokeStyle = "#00f7ff";
-    ctx.lineWidth = 2;
-    ctx.shadowColor = "#00f7ff";
-    ctx.shadowBlur = 10;
-    ctx.beginPath();
     for (let i = 0; i < 6; i++) {
       const angle = (i / 6) * Math.PI * 2 - Math.PI / 2;
-      const x = smallAvatarX + Math.cos(angle) * (smallAvatarR + 5);
-      const y = smallAvatarY + Math.sin(angle) * (smallAvatarR + 5);
+      const x = Math.cos(angle) * smallAvatarR;
+      const y = Math.sin(angle) * smallAvatarR;
       if (i === 0) ctx.moveTo(x, y);
       else ctx.lineTo(x, y);
     }
     ctx.closePath();
-    ctx.stroke();
-    ctx.shadowBlur = 0;
+    ctx.clip();
+    
+    const img = avatarImg;
+    const r = Math.max((smallAvatarR * 2.3) / img.width, (smallAvatarR * 2.3) / img.height);
+    const iw = img.width * r;
+    const ih = img.height * r;
+    ctx.drawImage(img, -iw / 2, -ih / 2, iw, ih);
+    ctx.restore();
   }
+  
+  ctx.restore();
 
   ctx.font = "700 16px Arial, sans-serif";
   ctx.fillStyle = "#00f7ff";
