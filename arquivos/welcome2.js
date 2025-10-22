@@ -6,10 +6,10 @@ router.get('/knights/welcome', async (req, res) => {
   try {
     const {
       username = "UNDEFINED",
-      guildName = "Discord Server",
-      guildIcon = "https://cdn.discordapp.com/embed/avatars/0.png",
+      guildName = "Servidor",
+      guildIcon = "https://i.pravatar.cc/150?img=1",
       memberCount = "1",
-      avatar = "https://cdn.discordapp.com/embed/avatars/0.png",
+      avatar = "https://i.pravatar.cc/300?img=2",
       background = "https://images.unsplash.com/photo-1579546929518-9e396f3cc809"
     } = req.query;
 
@@ -34,10 +34,10 @@ router.get('/knights/welcome', async (req, res) => {
 router.get('/knights/welcome2', async (req, res) => {
   try {
     const {
-      avatar = "https://cdn.discordapp.com/embed/avatars/0.png",
-      username = "User",
+      avatar = "https://i.pravatar.cc/300?img=3",
+      username = "Usuário",
       background = "https://images.unsplash.com/photo-1579546929518-9e396f3cc809",
-      groupname = "Discord Server",
+      groupname = "Servidor",
       member = "1"
     } = req.query;
 
@@ -62,10 +62,10 @@ router.get('/knights/goodbye', async (req, res) => {
   try {
     const {
       username = "UNDEFINED",
-      guildName = "Discord Server",
-      guildIcon = "https://cdn.discordapp.com/embed/avatars/0.png",
+      guildName = "Servidor",
+      guildIcon = "https://i.pravatar.cc/150?img=4",
       memberCount = "1",
-      avatar = "https://cdn.discordapp.com/embed/avatars/0.png",
+      avatar = "https://i.pravatar.cc/300?img=5",
       background = "https://images.unsplash.com/photo-1579546929518-9e396f3cc809"
     } = req.query;
 
@@ -90,8 +90,8 @@ router.get('/knights/goodbye', async (req, res) => {
 router.get('/knights/rank', async (req, res) => {
   try {
     const {
-      avatar = "https://cdn.discordapp.com/embed/avatars/0.png",
-      username = "User",
+      avatar = "https://i.pravatar.cc/300?img=6",
+      username = "Usuário",
       background = "https://images.unsplash.com/photo-1579546929518-9e396f3cc809",
       needxp = "1000",
       currxp = "100",
@@ -121,7 +121,7 @@ router.get('/knights/rank', async (req, res) => {
 router.get('/knights/levelup', async (req, res) => {
   try {
     const {
-      avatar = "https://cdn.discordapp.com/embed/avatars/0.png"
+      avatar = "https://i.pravatar.cc/300?img=7"
     } = req.query;
 
     const image = await new knights.Up()
@@ -140,7 +140,7 @@ router.get('/knights/levelup', async (req, res) => {
 router.get('/knights/horny', async (req, res) => {
   try {
     const {
-      avatar = "https://cdn.discordapp.com/embed/avatars/0.png"
+      avatar = "https://i.pravatar.cc/300?img=8"
     } = req.query;
 
     const image = await new knights.Horny()
@@ -159,7 +159,7 @@ router.get('/knights/horny', async (req, res) => {
 router.get('/knights/jojo', async (req, res) => {
   try {
     const {
-      image = "https://cdn.discordapp.com/embed/avatars/0.png"
+      image = "https://i.pravatar.cc/300?img=9"
     } = req.query;
 
     const img = await new knights.Jo()
@@ -178,7 +178,7 @@ router.get('/knights/jojo', async (req, res) => {
 router.get('/knights/patrick', async (req, res) => {
   try {
     const {
-      avatar = "https://cdn.discordapp.com/embed/avatars/0.png"
+      avatar = "https://i.pravatar.cc/300?img=10"
     } = req.query;
 
     const image = await new knights.Patrick()
@@ -197,8 +197,8 @@ router.get('/knights/patrick', async (req, res) => {
 router.get('/knights/bonk', async (req, res) => {
   try {
     const {
-      avatar1 = "https://cdn.discordapp.com/embed/avatars/0.png",
-      avatar2 = "https://cdn.discordapp.com/embed/avatars/1.png"
+      avatar1 = "https://i.pravatar.cc/300?img=11",
+      avatar2 = "https://i.pravatar.cc/300?img=12"
     } = req.query;
 
     const image = await new knights.Bonk()
@@ -218,7 +218,7 @@ router.get('/knights/bonk', async (req, res) => {
 router.get('/knights/burn', async (req, res) => {
   try {
     const {
-      avatar = "https://cdn.discordapp.com/embed/avatars/0.png"
+      avatar = "https://i.pravatar.cc/300?img=13"
     } = req.query;
 
     const image = await new knights.Burn()
