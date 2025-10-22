@@ -18,6 +18,8 @@ Backend API service (Express.js)
 
 ### Ping Routes
 - `/ping` - Banner de status de rede futurista (cyberpunk style)
+- `/ping2` - Banner neon simplificado com avatar centralizado (estilo premium neon)
+  - Parâmetros: name, speed, label, system, datetime, avatar, wallpaper
 
 ### Canvafy Routes
 - `/welcome` - Welcome card (params: avatar, background, title, description, border, avatarBorder, opacity)
@@ -65,7 +67,8 @@ Backend API service (Express.js)
 │   ├── musicard.js      # Musicard-quartz routes
 │   ├── musicard2.js     # Musicard routes
 │   ├── ping.js          # Ping network status banner
-│   ├── welcome2.js      # Knights-canvas routes (NEW)
+│   ├── ping2.js         # Ping2 neon-style banner (NEW)
+│   ├── welcome2.js      # Knights-canvas routes
 │   ├── welcome1.js      # WelCard route (unused)
 │   └── attp.js          # Empty file
 ├── package.json         # Dependencies and scripts
@@ -95,6 +98,12 @@ The following system packages are required for canvas image generation:
 - **Workflow Configuration**: Created "Server" workflow running on port 5000 with webview output
 - **Deployment Configuration**: Set up autoscale deployment with `npm start` command (stateless API - perfect for autoscale)
 - **Testing**: Verified API is working correctly - ping endpoint successfully returns PNG images
+- **Ping2 Endpoint Added**: Created new `/ping2` neon-style banner endpoint
+  - File: `arquivos/ping2.js`
+  - Features: centered circular avatar, robot icon, speed display, neon glow effects
+  - Parameters: name, speed, label, system, datetime, avatar, wallpaper
+  - Visual style: blue gradient background with cyan neon accents
+  - Tested and confirmed working
 - **Server Status**: Running successfully on http://0.0.0.0:5000
 
 ## User Preferences

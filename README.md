@@ -33,6 +33,33 @@ Generate a futuristic network status banner with user info and network statistic
 GET /ping?name=GODDARD&speed=999&latency=2&pingMs=15&loss=0&upload=850&os=LINUX
 ```
 
+### Ping2 Banner (Neon Style)
+Generate a simplified neon-style banner with centered avatar and speed indicator:
+
+- `GET /ping2` - Neon banner with centered avatar and speed (estilo premium neon)
+
+**Query Parameters:**
+- `name` - Nome do usuário (padrão: "NEON")
+- `speed` - Velocidade/número exibido (padrão: "999")
+- `label` - Texto do rótulo inferior (padrão: "VELOCIDADE")
+- `system` - Sistema/texto adicional opcional (padrão: "")
+- `datetime` - Data e hora customizada (formato: "DD/MM/YYYY - HH:MM")
+- `avatar` - URL da imagem do avatar
+- `wallpaper` - URL da imagem de fundo
+
+**Example:**
+```
+GET /ping2?name=GODDARD&speed=850&label=VELOCIDADE&system=LINUX&avatar=URL&wallpaper=URL
+```
+
+**Visual Features:**
+- Centered circular avatar with cyan/white borders
+- Robot icon next to username
+- Large speed/number display with speedometer icon
+- Neon cyan glow effects
+- Date/time indicators in corners
+- Blue gradient background (or custom wallpaper)
+
 ### Music Cards (Musicard2)
 Generate music player card images with different themes:
 
