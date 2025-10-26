@@ -223,6 +223,26 @@ GET /knights/bonk?avatar1=URL1&avatar2=URL2
 GET /knights/horny?avatar=URL
 ```
 
+### Photooxy Text Effects
+
+Generate custom text effects using the Photooxy.com service:
+
+- `GET /photooxy` - Create text effects from Photooxy templates
+
+**Query Parameters:**
+- `url` (required) - Full URL of the Photooxy effect template
+- `text` (required) - Text to apply to the effect (can be string or comma-separated for multiple lines)
+
+**Example:**
+```
+GET /photooxy?url=https://photooxy.com/logo-and-text-effects/make-tik-tok-text-effect-375.html&text=NEEXT
+```
+
+**Important Notes:**
+- This endpoint depends on the external photooxy.com service
+- The service may have anti-bot protections and might not work consistently
+- If this endpoint doesn't work, consider using the other image generation endpoints available in this API
+
 ## Running Locally
 
 ```bash
@@ -246,7 +266,11 @@ Content-Type: image/png
 - canvafy - Discord-style image generation
 - musicard - Music card generation
 - musicard-quartz - Additional music card themes
+- musify - Professional music cards with glass design
 - knights-canvas - Discord bot image generation (welcome, rank, memes)
+- cheerio - HTML parsing (for photooxy)
+- axios - HTTP client
+- form-data - Multipart form data (for photooxy)
 
 ## System Requirements
 

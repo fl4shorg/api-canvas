@@ -63,6 +63,10 @@ Backend API service (Express.js)
 - `/knights/bonk` - Bonk meme with two avatars (params: avatar1, avatar2)
 - `/knights/burn` - SpongeBob burning paper meme (params: avatar)
 
+### Photooxy Routes
+- `/photooxy` - Text effects via Photooxy.com (params: url, text)
+  - **Nota**: Depende de serviço externo que pode ter proteções anti-bot
+
 ## Project Structure
 ```
 .
