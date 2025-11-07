@@ -6,7 +6,6 @@ const pingRoutes = require('./arquivos/ping');
 const ping2Routes = require('./arquivos/ping2');
 const welcome2Routes = require('./arquivos/welcome2');
 const musifyRoutes = require('./arquivos/musify');
-const photooxyRoutes = require('./arquivos/photooxy');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -18,7 +17,6 @@ app.use('/', pingRoutes);
 app.use('/', ping2Routes);
 app.use('/', welcome2Routes);
 app.use('/', musifyRoutes);
-app.use('/', photooxyRoutes);
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Servidor rodando em http://0.0.0.0:${PORT}`);
 });
