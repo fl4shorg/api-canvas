@@ -38,28 +38,45 @@ router.get('/bolsonaro', async (req, res) => {
     const screenWidth = 478;  // largura do quadro
     const screenHeight = 270; // altura do quadro
 
-    // Calcular como ajustar a imagem para caber no quadro mantendo proporção
+    // Calcular para PREENCHER TODO o quadro (cover mode - tipo chroma key)
+    // A imagem vai ocupar todo o espaço branco, cortando o que sobrar
     const imgAspect = customImg.width / customImg.height;
     const screenAspect = screenWidth / screenHeight;
 
     let drawWidth, drawHeight, drawX, drawY;
+    let sourceX = 0, sourceY = 0, sourceWidth = customImg.width, sourceHeight = customImg.height;
 
     if (imgAspect > screenAspect) {
-      // Imagem é mais larga - ajustar pela largura
+      // Imagem é mais larga - ajustar pela altura (preenche verticalmente)
+      // e cortar os lados
+      const scaledWidth = customImg.width * (screenHeight / customImg.height);
+      const cropX = (scaledWidth - screenWidth) / 2;
+      
+      sourceWidth = customImg.width * (screenWidth / scaledWidth);
+      sourceX = (customImg.width - sourceWidth) / 2;
+      
       drawWidth = screenWidth;
-      drawHeight = screenWidth / imgAspect;
-      drawX = screenX;
-      drawY = screenY + (screenHeight - drawHeight) / 2;
-    } else {
-      // Imagem é mais alta - ajustar pela altura
       drawHeight = screenHeight;
-      drawWidth = screenHeight * imgAspect;
-      drawX = screenX + (screenWidth - drawWidth) / 2;
+      drawX = screenX;
+      drawY = screenY;
+    } else {
+      // Imagem é mais alta - ajustar pela largura (preenche horizontalmente)
+      // e cortar o topo/base
+      const scaledHeight = customImg.height * (screenWidth / customImg.width);
+      const cropY = (scaledHeight - screenHeight) / 2;
+      
+      sourceHeight = customImg.height * (screenHeight / scaledHeight);
+      sourceY = (customImg.height - sourceHeight) / 2;
+      
+      drawWidth = screenWidth;
+      drawHeight = screenHeight;
+      drawX = screenX;
       drawY = screenY;
     }
 
-    // Desenhar a imagem customizada no quadro
-    ctx.drawImage(customImg, drawX, drawY, drawWidth, drawHeight);
+    // Desenhar a imagem customizada preenchendo TODO o quadro branco
+    // Sintaxe: drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
+    ctx.drawImage(customImg, sourceX, sourceY, sourceWidth, sourceHeight, drawX, drawY, drawWidth, drawHeight);
 
     // Retornar a imagem final
     const buffer = canvas.toBuffer('image/png');
