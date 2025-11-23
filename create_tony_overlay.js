@@ -57,8 +57,8 @@ const path = require('path');
   for (let y = 0; y < h; y++) {
     for (let x = 0; x < w; x++) {
       if (mask[y * w + x]) {
-        for (let dy = -2; dy <= 2; dy++) {
-          for (let dx = -2; dx <= 2; dx++) {
+        for (let dy = -4; dy <= 4; dy++) {
+          for (let dx = -4; dx <= 4; dx++) {
             const nx = x + dx, ny = y + dy;
             if (nx >= 0 && ny >= 0 && nx < w && ny < h) {
               expand[ny * w + nx] = 1;
