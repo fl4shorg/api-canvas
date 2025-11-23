@@ -11,16 +11,13 @@ router.get('/bolsonaro', async (req, res) => {
       return res.status(400).json({ message: "Faltando o parâmetro 'image' com a URL da imagem" });
     }
 
-    // Carregar a imagem template do Bolsonaro
-    const templatePath = path.join(__dirname, '..', 'templates', 'bolsonaro_template.jpg');
-    const templateImg = await loadImage(templatePath);
+    // Carregar o template PNG com área branca transparente
+    const overlayPath = path.join(__dirname, '..', 'templates', 'bolsonaro_overlay.png');
+    const overlayImg = await loadImage(overlayPath);
 
     // Criar canvas com o tamanho do template
-    const canvas = createCanvas(templateImg.width, templateImg.height);
+    const canvas = createCanvas(overlayImg.width, overlayImg.height);
     const ctx = canvas.getContext('2d');
-
-    // Desenhar o template PRIMEIRO (fundo)
-    ctx.drawImage(templateImg, 0, 0);
 
     // Carregar a imagem customizada
     let customImg;
@@ -31,53 +28,33 @@ router.get('/bolsonaro', async (req, res) => {
       return res.status(400).json({ message: "Erro ao carregar a imagem da URL fornecida" });
     }
 
-    // Coordenadas EXATAS da tela/quadro branco (sem pegar braço, rosto, etc)
-    // Ajustadas para cobrir SOMENTE a área branca da TV
-    const screenX = 180;      // posição X do quadro (mais pra direita)
-    const screenY = 27;       // posição Y do quadro (um pouco mais abaixo)
-    const screenWidth = 440;  // largura do quadro (menor para não pegar o braço)
-    const screenHeight = 255; // altura do quadro (menor para não pegar embaixo da TV)
-
-    // Calcular para PREENCHER TODO o quadro (cover mode - tipo chroma key)
-    // A imagem vai ocupar todo o espaço branco, cortando o que sobrar
+    // PASSO 1: Desenhar a imagem customizada ATRÁS (preenchendo toda a área)
+    // Calcular para preencher mantendo proporção
+    const canvasAspect = canvas.width / canvas.height;
     const imgAspect = customImg.width / customImg.height;
-    const screenAspect = screenWidth / screenHeight;
-
+    
     let drawWidth, drawHeight, drawX, drawY;
-    let sourceX = 0, sourceY = 0, sourceWidth = customImg.width, sourceHeight = customImg.height;
-
-    if (imgAspect > screenAspect) {
-      // Imagem é mais larga - ajustar pela altura (preenche verticalmente)
-      // e cortar os lados
-      const scaledWidth = customImg.width * (screenHeight / customImg.height);
-      const cropX = (scaledWidth - screenWidth) / 2;
-      
-      sourceWidth = customImg.width * (screenWidth / scaledWidth);
-      sourceX = (customImg.width - sourceWidth) / 2;
-      
-      drawWidth = screenWidth;
-      drawHeight = screenHeight;
-      drawX = screenX;
-      drawY = screenY;
+    
+    if (imgAspect > canvasAspect) {
+      // Imagem mais larga - ajustar pela altura
+      drawHeight = canvas.height;
+      drawWidth = drawHeight * imgAspect;
+      drawX = (canvas.width - drawWidth) / 2;
+      drawY = 0;
     } else {
-      // Imagem é mais alta - ajustar pela largura (preenche horizontalmente)
-      // e cortar o topo/base
-      const scaledHeight = customImg.height * (screenWidth / customImg.width);
-      const cropY = (scaledHeight - screenHeight) / 2;
-      
-      sourceHeight = customImg.height * (screenHeight / scaledHeight);
-      sourceY = (customImg.height - sourceHeight) / 2;
-      
-      drawWidth = screenWidth;
-      drawHeight = screenHeight;
-      drawX = screenX;
-      drawY = screenY;
+      // Imagem mais alta - ajustar pela largura
+      drawWidth = canvas.width;
+      drawHeight = drawWidth / imgAspect;
+      drawX = 0;
+      drawY = (canvas.height - drawHeight) / 2;
     }
-
-    // Desenhar a imagem customizada preenchendo TODO o quadro branco
-    // A imagem será desenhada POR CIMA do quadro branco do template
-    // Sintaxe: drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
-    ctx.drawImage(customImg, sourceX, sourceY, sourceWidth, sourceHeight, drawX, drawY, drawWidth, drawHeight);
+    
+    // Desenhar a imagem customizada preenchendo o fundo
+    ctx.drawImage(customImg, drawX, drawY, drawWidth, drawHeight);
+    
+    // PASSO 2: Desenhar o overlay (Bolsonaro + TV) POR CIMA
+    // A área branca é transparente, então a imagem customizada aparece só ali
+    ctx.drawImage(overlayImg, 0, 0);
 
     // Retornar a imagem final
     const buffer = canvas.toBuffer('image/png');
