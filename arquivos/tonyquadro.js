@@ -45,8 +45,8 @@ router.get('/tonyquadro', async (req, res) => {
     ctx.drawImage(customImg, drawX, drawY, drawWidth, drawHeight);
     ctx.drawImage(overlayImg, 0, 0);
 
-    const buffer = canvas.toBuffer('image/png');
-    res.setHeader('Content-Type', 'image/png');
+    const buffer = canvas.toBuffer('image/jpeg');
+    res.setHeader('Content-Type', 'image/jpeg');
     res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     res.setHeader('Pragma', 'no-cache');
     res.setHeader('Expires', '0');
