@@ -11,13 +11,11 @@ router.get('/tonyquadro', async (req, res) => {
       return res.status(400).json({ message: "Faltando o parâmetro 'image' com a URL da imagem" });
     }
 
-    const templatePath = path.join(__dirname, '..', 'templates', 'tonyquadro_template.jpg');
-    const templateImg = await loadImage(templatePath);
+    const overlayPath = path.join(__dirname, '..', 'templates', 'tonyquadro_overlay.png');
+    const overlayImg = await loadImage(overlayPath);
 
-    const canvas = createCanvas(templateImg.width, templateImg.height);
+    const canvas = createCanvas(overlayImg.width, overlayImg.height);
     const ctx = canvas.getContext('2d');
-
-    ctx.drawImage(templateImg, 0, 0);
 
     let customImg;
     try {
@@ -27,32 +25,28 @@ router.get('/tonyquadro', async (req, res) => {
       return res.status(400).json({ message: "Erro ao carregar a imagem da URL fornecida" });
     }
 
-    const frameX = 49;
-    const frameY = 31;
-    const frameWidth = 406;
-    const frameHeight = 573;
-
-    const frameAspect = frameWidth / frameHeight;
+    const canvasAspect = canvas.width / canvas.height;
     const imgAspect = customImg.width / customImg.height;
     
-    let sx, sy, sWidth, sHeight;
+    let drawWidth, drawHeight, drawX, drawY;
     
-    if (imgAspect > frameAspect) {
-      sHeight = customImg.height;
-      sWidth = sHeight * frameAspect;
-      sx = (customImg.width - sWidth) / 2;
-      sy = 0;
+    if (imgAspect > canvasAspect) {
+      drawHeight = canvas.height;
+      drawWidth = drawHeight * imgAspect;
+      drawX = (canvas.width - drawWidth) / 2;
+      drawY = 0;
     } else {
-      sWidth = customImg.width;
-      sHeight = sWidth / frameAspect;
-      sx = 0;
-      sy = (customImg.height - sHeight) / 2;
+      drawWidth = canvas.width;
+      drawHeight = drawWidth / imgAspect;
+      drawX = 0;
+      drawY = (canvas.height - drawHeight) / 2;
     }
     
-    ctx.drawImage(customImg, sx, sy, sWidth, sHeight, frameX, frameY, frameWidth, frameHeight);
+    ctx.drawImage(customImg, drawX, drawY, drawWidth, drawHeight);
+    ctx.drawImage(overlayImg, 0, 0);
 
-    const buffer = canvas.toBuffer('image/jpeg', { quality: 0.95 });
-    res.setHeader('Content-Type', 'image/jpeg');
+    const buffer = canvas.toBuffer('image/png');
+    res.setHeader('Content-Type', 'image/png');
     res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     res.setHeader('Pragma', 'no-cache');
     res.setHeader('Expires', '0');
