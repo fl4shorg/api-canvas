@@ -19,7 +19,7 @@ router.get('/bolsonaro', async (req, res) => {
     const canvas = createCanvas(templateImg.width, templateImg.height);
     const ctx = canvas.getContext('2d');
 
-    // Desenhar o template primeiro
+    // Desenhar o template PRIMEIRO (fundo)
     ctx.drawImage(templateImg, 0, 0);
 
     // Carregar a imagem customizada
@@ -31,12 +31,12 @@ router.get('/bolsonaro', async (req, res) => {
       return res.status(400).json({ message: "Erro ao carregar a imagem da URL fornecida" });
     }
 
-    // Coordenadas e dimensões da tela/quadro branco
-    // Analisando a imagem, o quadro branco está aproximadamente em:
-    const screenX = 153;      // posição X do quadro
-    const screenY = 20;       // posição Y do quadro
-    const screenWidth = 478;  // largura do quadro
-    const screenHeight = 270; // altura do quadro
+    // Coordenadas EXATAS da tela/quadro branco (sem pegar braço, rosto, etc)
+    // Ajustadas para cobrir SOMENTE a área branca da TV
+    const screenX = 180;      // posição X do quadro (mais pra direita)
+    const screenY = 27;       // posição Y do quadro (um pouco mais abaixo)
+    const screenWidth = 440;  // largura do quadro (menor para não pegar o braço)
+    const screenHeight = 255; // altura do quadro (menor para não pegar embaixo da TV)
 
     // Calcular para PREENCHER TODO o quadro (cover mode - tipo chroma key)
     // A imagem vai ocupar todo o espaço branco, cortando o que sobrar
@@ -75,6 +75,7 @@ router.get('/bolsonaro', async (req, res) => {
     }
 
     // Desenhar a imagem customizada preenchendo TODO o quadro branco
+    // A imagem será desenhada POR CIMA do quadro branco do template
     // Sintaxe: drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
     ctx.drawImage(customImg, sourceX, sourceY, sourceWidth, sourceHeight, drawX, drawY, drawWidth, drawHeight);
 
