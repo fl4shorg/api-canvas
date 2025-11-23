@@ -13,6 +13,25 @@ const tonyquadroRoutes = require('./arquivos/tonyquadro');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+app.get('/', (req, res) => {
+    res.json({
+        status: 'online',
+        message: 'Canvas API Server',
+        endpoints: [
+            '/musicard',
+            '/musicard2',
+            '/canvasfy',
+            '/ping',
+            '/ping2',
+            '/welcome2',
+            '/musify',
+            '/attp',
+            '/bolsonaro',
+            '/tonyquadro'
+        ]
+    });
+});
+
 app.use('/', musicardRoutes);
 app.use('/', canvasfyRoutes);
 app.use('/', musicard2);
