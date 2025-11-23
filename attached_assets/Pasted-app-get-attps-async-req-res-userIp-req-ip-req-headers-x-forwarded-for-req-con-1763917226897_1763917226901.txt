@@ -1,0 +1,109 @@
+app.get("/attps", async (req, res) => {
+userIp = req.ip || req.headers["x-forwarded-for"] || req.connection.remoteAddress
+type = req.query.type
+texto = req.query.texto
+apikey = req.query.apikey
+if(!type) return res.json({message: "Faltando o parametro type"})
+if(!texto) return res.json({message: "Faltando o parametro texto"})
+if(!apikey)return res.json({message:'cade o parametro apikey'})
+if(!key.map(i => i.apikey)?.includes(apikey)) return res.sendFile(path.join(__dirname, "./public/", "apikey_invalida.html"))
+if(key[key.map(i => i?.apikey)?.indexOf(apikey)]?.request <= 0) return res.json({message: "Apikey inválida ou requests esgotados!"})
+RegisKey(req.query.apikey, userIp)
+var ITC = key.map(i => i?.apikey)?.indexOf(apikey)
+console.log(color(' ApiKey:'+ ` ${apikey} • Limite: ${key[ITC]?.request}\n`,'red'),color('','red'), color('Request', 'red'), '• ' + color('Ping: ' + ping(), 'red'))
+const validTypes = ["attp", "attp1", "attp2", "attp3", "attp4", "attp5", "attp6", "attp7", "attp8", "attp9", "attp10", "attp11", "attp12"]
+if (!validTypes.includes(type)) return res.status(400).send({ error: "Tipo inválido. Use 'attp' até 'attp12'." })
+try {//By: 𖧄 𝐋𝐔𝐂𝐀𝐒 𝐌𝐎𝐃 𝐃𝐎𝐌𝐈𝐍𝐀 𖧄
+const width = 512
+const height = 512
+const encoder = new GIFEncoder(width, height)
+encoder.start()
+encoder.setRepeat(0)
+encoder.setDelay(100)
+encoder.setQuality(10)
+const canvas = createCanvas(width, height)
+const ctx = canvas.getContext("2d")
+const styles = {
+attp: () => {
+ctx.font = "bold 60px Arial"
+ctx.fillStyle = `hsl(${Math.random() * 360}, 100%, 50%)`
+},
+attp1: () => {
+ctx.font = "italic 50px Comic Sans MS"
+ctx.fillStyle = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`
+},
+attp2: () => {
+ctx.font = "bold 70px Impact"
+ctx.strokeStyle = "yellow"
+ctx.lineWidth = 5
+ctx.strokeText(texto, width / 2, height / 2)
+},
+attp3: () => {
+ctx.font = "bold 50px Tahoma"
+ctx.fillStyle = `hsl(${Math.random() * 360}, 100%, 70%)`
+},
+attp4: () => {
+ctx.font = "bold 60px Georgia"
+ctx.fillStyle = "cyan"
+},
+attp5: () => {
+ctx.font = "bold 60px Verdana"
+ctx.fillStyle = `hsl(${Math.random() * 360}, 50%, 40%)`
+},
+attp6: () => {
+ctx.font = "bold 60px Courier New"
+ctx.fillStyle = "lime"
+},
+attp7: () => {
+ctx.font = "bold 60px Helvetica"
+ctx.fillStyle = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`
+},
+attp8: () => {
+ctx.font = "bold 60px Times New Roman"
+ctx.fillStyle = "gold"
+},
+attp9: () => {
+ctx.font = "bold 70px Fantasy"
+ctx.shadowColor = "black"
+ctx.shadowBlur = 10
+ctx.fillStyle = "white"
+},
+attp10: () => {
+ctx.font = "bold 80px Arial"
+const gradient = ctx.createLinearGradient(0, 0, width, 0)
+gradient.addColorStop(0, "red")
+gradient.addColorStop(0.5, "blue")
+gradient.addColorStop(1, "green")
+ctx.fillStyle = gradient
+},
+attp11: () => {
+ctx.font = "bold 70px Sans-serif"
+ctx.strokeStyle = "white"
+ctx.lineWidth = 4
+ctx.strokeText(texto, width / 2, height / 2)
+ctx.fillStyle = "purple"
+},
+attp12: () => {
+ctx.font = "bold 3d 70px Arial"
+ctx.fillStyle = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`
+ctx.shadowBlur = 20
+ctx.shadowColor = "black"
+},
+}
+const selectedStyle = styles[type]
+for (let i = 0; i < 10; i++) {
+ctx.clearRect(0, 0, width, height)
+selectedStyle()
+ctx.textAlign = "center"
+ctx.textBaseline = "middle"
+ctx.fillText(texto, width / 2, height / 2)
+encoder.addFrame(ctx)
+}
+encoder.finish()
+res.setHeader("Content-Type", "image/gif")
+res.send(encoder.out.getData())
+} catch (error) {
+console.error("Erro ao gerar figurinha:", error)
+res.status(500).send({ error: "Erro ao gerar figurinha." })
+}
+})

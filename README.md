@@ -60,6 +60,41 @@ GET /ping2?name=GODDARD&speed=850&label=VELOCIDADE&system=LINUX&avatar=URL&wallp
 - Date/time indicators in corners
 - Blue gradient background (or custom wallpaper)
 
+### ATTP - Animated Text to Picture
+Generate animated GIF stickers with text in different styles:
+
+- `GET /attp` - Animated text GIF generator with multiple style options
+
+**Query Parameters:**
+- `type` (required) - Style type: `attp`, `attp1`, `attp2`, `attp3`, `attp4`, `attp5`, `attp6`, `attp7`, `attp8`, `attp9`, `attp10`, `attp11`, `attp12`
+- `texto` (required) - Text to display in the GIF
+
+**Example:**
+```
+GET /attp?type=attp10&texto=Hello%20World
+```
+
+**Available Styles:**
+- `attp` - Bold colorful text with random HSL colors
+- `attp1` - Italic Comic Sans with random RGB colors
+- `attp2` - Bold Impact with yellow stroke/outline
+- `attp3` - Bold colorful text with pastel HSL colors
+- `attp4` - Bold cyan text
+- `attp5` - Bold text with muted HSL colors
+- `attp6` - Bold lime green text
+- `attp7` - Bold text with random RGB colors
+- `attp8` - Bold gold text
+- `attp9` - Bold white text with shadow effect
+- `attp10` - Bold text with rainbow gradient (red→blue→green)
+- `attp11` - Bold purple text with white stroke/outline
+- `attp12` - Bold colorful text with shadow blur effect
+
+**Features:**
+- 10-frame animated GIF (512x512 pixels)
+- Each frame displays the text with the selected style
+- Different colors animate in random patterns (for styles with random colors)
+- Perfect for creating animated stickers for messaging apps
+
 ### Musify Glass Cards
 Generate modern music cards with glass design and auto color extraction:
 

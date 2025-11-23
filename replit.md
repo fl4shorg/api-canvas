@@ -22,6 +22,12 @@ Backend API service (Express.js)
 - `/ping2` - Banner neon simplificado com avatar centralizado (estilo premium neon)
   - Parâmetros: name, speed, label, system, datetime, avatar, wallpaper
 
+### ATTP Routes
+- `/attp` - GIF animado de texto com 13 estilos diferentes (attp, attp1-attp12)
+  - Parâmetros: type (required), texto (required)
+  - Gera GIFs animados de 512x512px com 10 frames
+  - Estilos incluem: cores aleatórias, gradientes, contornos, sombras, etc.
+
 ### Musify Routes
 - `/musify` - Music card com glass design moderno e extração automática de cores
   - Parâmetros: thumbnail, name, author, requester, progress, startTime, endTime, scale, backgroundColor, backgroundImage, backgroundBlur, backgroundDarkness, nameColor, authorColor, requesterColor, progressColor, timeColor
@@ -77,10 +83,10 @@ Backend API service (Express.js)
 │   ├── musicard2.js     # Musicard routes
 │   ├── ping.js          # Ping network status banner
 │   ├── ping2.js         # Ping2 neon-style banner
-│   ├── musify.js        # Musify glass design cards (NEW)
+│   ├── musify.js        # Musify glass design cards
+│   ├── attp.js          # ATTP animated GIF text generator (NEW)
 │   ├── welcome2.js      # Knights-canvas routes
-│   ├── welcome1.js      # WelCard route (unused)
-│   └── attp.js          # Empty file
+│   └── welcome1.js      # WelCard route (unused)
 ├── package.json         # Dependencies and scripts
 └── replit.md           # This file
 ```
@@ -105,10 +111,14 @@ The following system packages are required for canvas image generation:
 - **GitHub Import Setup**: Successfully imported and configured project from GitHub repository
 - **System Dependencies**: Installed expat, util-linux, and pkg-config for canvas native bindings (required for @napi-rs/canvas and canvas libraries)
 - **Node.js Dependencies**: Fresh install of all npm packages including previously missing knights-canvas and musify libraries
+- **ATTP Feature**: Added animated GIF text generator with 13 different styles (attp to attp12)
+  - Installed gif-encoder-2 package for GIF generation
+  - Created `/attp` endpoint that generates 512x512px animated GIFs
+  - Supports multiple text styles: gradients, outlines, shadows, random colors
 - **Workflow Configuration**: Created "Server" workflow running on port 5000 with webview output
 - **Deployment Configuration**: Set up autoscale deployment with `npm start` command (stateless API - perfect for autoscale)
 - **Server Status**: Running successfully on http://0.0.0.0:5000
-- **Testing**: API verified working - tested `/ping2` endpoint successfully returning PNG images
+- **Testing**: API verified working - tested `/ping2` and `/attp` endpoints successfully
 - **Git Configuration**: Updated .gitignore with proper Node.js ignore patterns
 
 ## User Preferences
