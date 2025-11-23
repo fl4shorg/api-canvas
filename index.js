@@ -9,6 +9,7 @@ const musifyRoutes = require('./arquivos/musify');
 const attpRoutes = require('./arquivos/attp');
 const bolsonaroRoutes = require('./arquivos/bolsonaro');
 const tonyquadroRoutes = require('./arquivos/tonyquadro');
+const paintRoutes = require('./arquivos/paint');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -27,7 +28,8 @@ app.get('/', (req, res) => {
             '/musify',
             '/attp',
             '/bolsonaro',
-            '/tonyquadro'
+            '/tonyquadro',
+            '/paint'
         ]
     });
 });
@@ -42,6 +44,7 @@ app.use('/', musifyRoutes);
 app.use('/', attpRoutes);
 app.use('/', bolsonaroRoutes);
 app.use('/', tonyquadroRoutes);
+app.use('/', paintRoutes);
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Servidor rodando em http://0.0.0.0:${PORT}`);
 });
