@@ -1,7 +1,12 @@
-# node_modules/
+node_modules/
 npm-debug.log
+.npm
 .env
 .DS_Store
 *.log
-.replit
-replit.nix
+package-lock.json
+
+/tmp/
+.cache/
+dist/
+build/
