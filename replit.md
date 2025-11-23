@@ -28,6 +28,12 @@ Backend API service (Express.js)
   - Gera GIFs animados de 512x512px com 10 frames
   - Estilos incluem: cores aleatórias, gradientes, contornos, sombras, etc.
 
+### Bolsonaro Routes
+- `/bolsonaro` - Meme do Bolsonaro apontando para TV com imagem personalizada
+  - Parâmetros: image (required - URL da imagem)
+  - Coloca qualquer imagem na tela da TV que o Bolsonaro está apresentando
+  - Ajusta automaticamente o tamanho mantendo proporção
+
 ### Musify Routes
 - `/musify` - Music card com glass design moderno e extração automática de cores
   - Parâmetros: thumbnail, name, author, requester, progress, startTime, endTime, scale, backgroundColor, backgroundImage, backgroundBlur, backgroundDarkness, nameColor, authorColor, requesterColor, progressColor, timeColor
@@ -84,9 +90,12 @@ Backend API service (Express.js)
 │   ├── ping.js          # Ping network status banner
 │   ├── ping2.js         # Ping2 neon-style banner
 │   ├── musify.js        # Musify glass design cards
-│   ├── attp.js          # ATTP animated GIF text generator (NEW)
+│   ├── attp.js          # ATTP animated GIF text generator
+│   ├── bolsonaro.js     # Bolsonaro TV meme generator (NEW)
 │   ├── welcome2.js      # Knights-canvas routes
 │   └── welcome1.js      # WelCard route (unused)
+├── templates/            # Template images
+│   └── bolsonaro_template.jpg  # Bolsonaro TV template
 ├── package.json         # Dependencies and scripts
 └── replit.md           # This file
 ```
@@ -115,10 +124,14 @@ The following system packages are required for canvas image generation:
   - Installed gif-encoder-2 package for GIF generation
   - Created `/attp` endpoint that generates 512x512px animated GIFs
   - Supports multiple text styles: gradients, outlines, shadows, random colors
+- **Bolsonaro Meme Feature**: Added Bolsonaro TV meme generator
+  - Created `/bolsonaro` endpoint that overlays custom images on TV screen
+  - Template image saved in `templates/` folder
+  - Automatic aspect ratio adjustment to fit images properly
 - **Workflow Configuration**: Created "Server" workflow running on port 5000 with webview output
 - **Deployment Configuration**: Set up autoscale deployment with `npm start` command (stateless API - perfect for autoscale)
 - **Server Status**: Running successfully on http://0.0.0.0:5000
-- **Testing**: API verified working - tested `/ping2` and `/attp` endpoints successfully
+- **Testing**: API verified working - tested `/ping2`, `/attp`, and `/bolsonaro` endpoints successfully
 - **Git Configuration**: Updated .gitignore with proper Node.js ignore patterns
 
 ## User Preferences

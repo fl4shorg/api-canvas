@@ -95,6 +95,25 @@ GET /attp?type=attp10&texto=Hello%20World
 - Different colors animate in random patterns (for styles with random colors)
 - Perfect for creating animated stickers for messaging apps
 
+### Bolsonaro TV Meme
+Generate a meme image with Bolsonaro pointing at a TV screen showing your custom image:
+
+- `GET /bolsonaro` - Put any image on the TV screen that Bolsonaro is presenting
+
+**Query Parameters:**
+- `image` (required) - URL of the image to display on the TV screen
+
+**Example:**
+```
+GET /bolsonaro?image=https://i.imgur.com/example.png
+```
+
+**Features:**
+- Automatically fits your image into the TV screen maintaining aspect ratio
+- Centers the image properly without cropping important parts
+- Perfect for creating presentation memes
+- The image is scaled to fit perfectly in the white screen area
+
 ### Musify Glass Cards
 Generate modern music cards with glass design and auto color extraction:
 
